@@ -1,4 +1,3 @@
-//conecta con el backend y envia el modelo
 import 'dart:convert';
 import 'package:http/http.dart';
 
