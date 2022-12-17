@@ -33,9 +33,9 @@ class AppState {
           navigatorKey ?? this.navigatorKey, homeState ?? this.homeState, loginState ?? this.loginState);
 }
 
-
 AppState appReducer(AppState state, AppAction action) {
   AppState newState = loginReducer(state, action);
+  AppState newState = navigationReducer(newState, action);
   return newState;
 }
 

@@ -4,6 +4,7 @@ import 'package:ictus/login/login.dart';
 import 'package:ictus/store/actions.dart';
 import 'package:ictus/store/store.dart';
 
+import 'alert/alert.dart';
 import 'home/home.dart';
 import 'package:redux/redux.dart';
 import 'package:redux_thunk/redux_thunk.dart';
@@ -50,7 +51,9 @@ class MyApp extends StatelessWidget {
             home: Container(),
             initialRoute: Routes.home,
             routes: {
-              Routes.home: (c) => LoginWidget(),
+              Routes.home: (c) => HomeWidget(),
+              Routes.alert: (c) => AlertWidget(),
+              Routes.login: (c) => LoginWidget(),
             },
           ),
         ),
