@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_redux/flutter_redux.dart';
+import 'package:ictus/login/login.dart';
 import 'package:ictus/store/actions.dart';
 import 'package:ictus/store/store.dart';
 
+import 'alert/alert.dart';
 import 'home/home.dart';
 import 'package:redux/redux.dart';
 import 'package:redux_thunk/redux_thunk.dart';
@@ -38,20 +40,25 @@ class MyApp extends StatelessWidget {
       store: store,
       child: StoreConnector<AppState, GlobalKey<NavigatorState>>(
         converter: (sto) => sto.state.navigatorKey,
-        builder: (context, navKey) => MaterialApp(
-          title: 'Flutter Demo',
-          navigatorKey: navKey,
-          theme: ThemeData(
-            // Notice that the counter didn't reset back to zero; the application
-            // is not restarted.
-            primarySwatch: Colors.blue,
+        builder: (context, navKey) => StoreConnector<AppState, String>(
+          converter: (store) => store.state.title,
+          builder: (cto, title) => MaterialApp(
+            title: title,
+            navigatorKey: navKey,
+            theme: ThemeData(
+              // Notice that the counter didn't reset back to zero; the application
+              // is not restarted.
+              primarySwatch: Colors.blue,
+            ),
+            home: Container(),
+            initialRoute: Routes.home,
+            routes: {
+              Routes.home: (c) => HomeWidget(),
+              Routes.alert: (c) => AlertWidget(),
+              Routes.login: (c) => LoginWidget(),
+              Routes.profile: (c) => ProfileWidget(),
+            },
           ),
-          home: Container(),
-          initialRoute: Routes.home,
-          routes: {
-            Routes.home: (c) => HomeWidget(),
-            Routes.profile: (c) => ProfileWidget(),
-          },
         ),
       ),
     );
