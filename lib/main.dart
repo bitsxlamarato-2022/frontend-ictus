@@ -13,6 +13,19 @@ void main() {
   runApp(MyApp(store: store));
 }
 
+
+class Mock extends StatelessWidget {
+  final Store<AppState> store;
+
+  const Mock({super.key, required this.store});
+
+  @override
+  Widget build(BuildContext context) {
+    return HomeWidget();
+  }
+  
+}
+
 class MyApp extends StatelessWidget {
   final Store<AppState> store;
   const MyApp({super.key, required this.store});
