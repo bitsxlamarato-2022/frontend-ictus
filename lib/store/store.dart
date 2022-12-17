@@ -25,13 +25,9 @@ class AppState {
           navigatorKey ?? this.navigatorKey, homeState ?? this.homeState);
 }
 
-class AppAction {}
-
 AppState appReducer(AppState state, AppAction action) {
-  switch (action.runtimeType) {
-    default:
-      return state;
-  }
+  AppState newState = navigationReducer(state, action);
+  return newState;
 }
 
 AppState navigationReducer(AppState prev, AppAction action) {
