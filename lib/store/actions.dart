@@ -4,6 +4,7 @@ import 'package:flutter/cupertino.dart';
 
 class Routes {
   static const String home = "HOME";
+  static const String alert = "ALERT";
 }
 
 @immutable
@@ -24,4 +25,5 @@ class NavigateToNextAndReplace extends AppAction {
 }
 
 class NavigateBack extends AppAction {}
+
 
