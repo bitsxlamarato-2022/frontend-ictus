@@ -27,7 +27,7 @@ class AppState {
 
 class AppAction {}
 
-AppState reducer(AppState state, AppAction action) {
+AppState appReducer(AppState state, AppAction action) {
   switch (action.runtimeType) {
     default:
       return state;

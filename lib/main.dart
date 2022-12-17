@@ -4,31 +4,39 @@ import 'package:ictus/store/actions.dart';
 import 'package:ictus/store/store.dart';
 
 import 'home/home.dart';
+import 'package:redux/redux.dart';
+import 'package:redux_thunk/redux_thunk.dart';
 
 void main() {
-  runApp(const MyApp());
+  final store = Store<AppState>((x, a) => appReducer(x, a),
+      initialState: AppState.init(), middleware: [thunkMiddleware]);
+  runApp(MyApp(store: store));
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+  final Store<AppState> store;
+  const MyApp({super.key, required this.store});
 
   @override
   Widget build(BuildContext context) {
-    return StoreConnector<AppState, GlobalKey<NavigatorState>>(
-      converter: (sto) => sto.state.navigatorKey,
-      builder: (context, navKey) => MaterialApp(
-        title: 'Flutter Demo',
-        navigatorKey: navKey,
-        theme: ThemeData(
-          // Notice that the counter didn't reset back to zero; the application
-          // is not restarted.
-          primarySwatch: Colors.blue,
+    return StoreProvider<AppState>(
+      store: store,
+      child: StoreConnector<AppState, GlobalKey<NavigatorState>>(
+        converter: (sto) => sto.state.navigatorKey,
+        builder: (context, navKey) => MaterialApp(
+          title: 'Flutter Demo',
+          navigatorKey: navKey,
+          theme: ThemeData(
+            // Notice that the counter didn't reset back to zero; the application
+            // is not restarted.
+            primarySwatch: Colors.blue,
+          ),
+          home: Container(),
+          initialRoute: Routes.home,
+          routes: {
+            Routes.home: (c) => HomeWidget(),
+          },
         ),
-        home: Container(),
-        initialRoute: Routes.home,
-        routes: {
-          Routes.home: (c) => HomeWidget(),
-        },
       ),
     );
   }
