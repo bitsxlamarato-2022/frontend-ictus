@@ -12,6 +12,10 @@ class ChangeNameAction extends AppAction {
   final String variable;
 
   ChangeNameAction(this.variable);
+}
+class ChangePassAction extends AppAction {
+  final String variable;
 
+  ChangePassAction(this.variable);
 }
 

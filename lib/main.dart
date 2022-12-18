@@ -52,7 +52,7 @@ class MyApp extends StatelessWidget {
               primarySwatch: Colors.blue,
             ),
             home: Container(),
-            initialRoute: Routes.alert,
+            initialRoute: Routes.login,
             routes: {
               Routes.home: (c) => HomeWidget(),
               Routes.alert: (c) => AlertWidget(),
