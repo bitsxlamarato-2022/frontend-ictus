@@ -16,15 +16,26 @@ class AcceptedWidget extends StatelessWidget {
           () => store.dispatch(NavigateToNextAndReplace(Routes.home)),
       builder: (cto, goBack) => Scaffold(
         body: Container(
-          color: Colors.grey[400],
+          color: Colors.indigo[50],
           child: Center(
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Text("Data sent correctly!"),
+                const Text(
+                    "Data sent correctly!",
+                    style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold, color: Colors.black),
+                ),
+                const SizedBox(height: 20),
                 ElevatedButton(
+                  style: ElevatedButton.styleFrom(
+                    primary: Colors.indigo[800],
+                    fixedSize: Size(150, 50),
+                  ),
                   onPressed: goBack,
-                  child: Text("Ok"),
+                  child: const Text(
+                      "Ok",
+                      style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold, color: Colors.white),
+                  ),
                 ),
               ],
             ),

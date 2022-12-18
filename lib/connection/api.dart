@@ -6,11 +6,12 @@ import 'dtos/user.dart';
 class BackendAPIService {
   final String host = "http://192.168.43.252:8000";
 
-  Future<double> getECGbyUserID(String id) async {
+  Future<UserDTO> getECGbyUserID(String id) async {
+    print(id);
     Uri uri = Uri.parse(host + "/users/" + id);
     final response = await get(uri);
     if (response.statusCode == 200) {
-      return jsonDecode(response.body)['ecg'];
+      return UserDTO.fromJson(jsonDecode(response.body));
     } else {
       throw Exception('Failed to send id');
     }

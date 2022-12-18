@@ -11,46 +11,63 @@ class HomeWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body:StoreConnector<AppState, VoidCallback>(
-        converter: (sto) => () => sto.dispatch(NavigateToNextAndReplace(Routes.profile)),
-        builder:(cto, goProfile) => Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          crossAxisAlignment: CrossAxisAlignment.center,
+        converter: (sto) =>
+            () => sto.dispatch(NavigateToNextAndReplace(Routes.profile)),
+        builder:(cto, goProfile) => StoreConnector<AppState, VoidCallback>(
+          converter: (sto) => () => sto.dispatch(NavigateToNextAndReplace(Routes.alert)),
+          builder: (cto, goHistory) => Center(
+            child: Container(
+              color: Colors.indigo[50],
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: <Widget>[
+                  AppBar(
+                    centerTitle: true,
+                    title: const Text(
+                        "Home",
+                        style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold, color: Colors.white),
+                    ),
+                    backgroundColor: Colors.indigo[900],
+                  ),
+                const SizedBox(
+                  height: 20,
+                ),
+                ElevatedButton(
+                  style: ElevatedButton.styleFrom(
+                    primary: Colors.indigo[900],
+                    fixedSize: const Size(350, 270),
+                  ),
+                  onPressed: goProfile,
+                  child: const Center(
+                    child: Text(
+                      "My profile",
+                      style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold, color: Colors.white),
+                    ),
+                  ),
+                ),
+                  const SizedBox(
+                    height: 30,
+                  ),
+                ElevatedButton(
+                  style: ElevatedButton.styleFrom(
+                    primary: Colors.indigo[400],
+                    fixedSize: const Size(350, 270),
+                  ),
+                  onPressed: goHistory,
+                  child: const Center(
+                    child: Text(
+                      "My historial",
+                      style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold, color: Colors.white),
+                    ),
 
-          children: <Widget>[
-          const SizedBox(
-            height: 50,
-          ),
-          ElevatedButton(
-            style: TextButton.styleFrom(
-
-              textStyle: const TextStyle(fontSize: 30),
-            ),
-            onPressed: goProfile,
-            child: const Padding(
-              padding: EdgeInsets.fromLTRB(180, 150, 0, 0),
-              child: Center(
-                child: Text('Perfil'),
-              ),//aqui se li te que passar el nom del usuari per parametre
-            ),
-          ),
-            const SizedBox(
-              height: 50,
-            ),
-          ElevatedButton(
-            style: TextButton.styleFrom(
-              textStyle: const TextStyle(fontSize: 50),
-              primary: Colors.grey[300],
-              ),
-            onPressed: goProfile,//TODO
-            child: const Padding(
-              padding: EdgeInsets.fromLTRB(0,0, 0, 0),
-              child: Center(
-                child: Text('Electrocardiograma'),
-              ),
-            ),
-          ),//aqui se li te que passar el nom del usuari per parametre
-        ],
+                  ),
+                ),
+              ],
       ),
+            ),
+          ),
+        ),
     ));
   }
 }

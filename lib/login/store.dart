@@ -3,13 +3,13 @@ import 'package:ictus/store/actions.dart';
 import 'package:ictus/store/store.dart';
 
 class LoginState {
-  final String name;
+  final String id;
 
-  LoginState.init() : name = "";
+  LoginState.init() : id = "string";
 
-  LoginState(this.name);
+  LoginState(this.id);
 
-  LoginState copy({String? name}) => LoginState(name ?? this.name);
+  LoginState copy({String? name}) => LoginState(name ?? this.id);
 }
 
 AppState loginReducer(AppState prev, AppAction action) {

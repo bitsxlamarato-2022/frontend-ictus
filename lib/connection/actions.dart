@@ -8,7 +8,8 @@ import 'dtos/user.dart';
 
 ThunkAction<AppState> getECGByUserID() {
   return (Store<AppState> store) async {
-    Future<double> userDTO = BackendAPIService().getECGbyUserID(store.state.loginState.name);
+    print(store.state.loginState);
+    Future<UserDTO> userDTO = BackendAPIService().getECGbyUserID(store.state.loginState.id);
     userDTO.then((value) {
       store.dispatch(const NavigateToNextAndReplace(Routes.accepted));
     });
