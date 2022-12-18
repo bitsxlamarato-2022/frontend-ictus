@@ -6,7 +6,7 @@ import '../store/store.dart';
 
 ThunkAction<AppState> sendUserId() {
   return (Store<AppState> store) async {
-    BackendAPIService().sendUserId(store.state.webserviceState.userId);
+   // BackendAPIService().sendUserId(store.state.webserviceState.userId);
     return;
   };
 }
