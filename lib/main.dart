@@ -4,6 +4,7 @@ import 'package:ictus/login/login.dart';
 import 'package:ictus/store/actions.dart';
 import 'package:ictus/store/store.dart';
 
+import 'accepted/accepted.dart';
 import 'alert/alert.dart';
 import 'home/home.dart';
 import 'package:redux/redux.dart';
@@ -51,11 +52,12 @@ class MyApp extends StatelessWidget {
               primarySwatch: Colors.blue,
             ),
             home: Container(),
-            initialRoute: Routes.home,
+            initialRoute: Routes.alert,
             routes: {
               Routes.home: (c) => HomeWidget(),
               Routes.alert: (c) => AlertWidget(),
               Routes.login: (c) => LoginWidget(),
+              Routes.accepted: (c) => AcceptedWidget(),
               Routes.profile: (c) => ProfileWidget(),
             },
           ),
