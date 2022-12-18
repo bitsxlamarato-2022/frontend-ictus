@@ -1,37 +1,54 @@
+import 'dart:math';
+
 import 'package:flutter/cupertino.dart';
 
 import '../connection/store.dart';
+import '../historial/store.dart';
 import '../home/store.dart';
+import '../login/store.dart';
 import 'actions.dart';
 
 @immutable
 class AppState {
+  final String title;
   final WebServiceState webserviceState;
   final GlobalKey<NavigatorState> navigatorKey;
   final HomeState homeState;
+  final LoginState loginState;
+  final HistorialState historialState;
 
   AppState.init()
-      : webserviceState = const WebServiceState.init(),
+      : title = "GUARRA",
+        webserviceState = const WebServiceState.init(),
         navigatorKey = GlobalKey<NavigatorState>(),
-        homeState = HomeState.init();
+        homeState = HomeState.init(),
+        loginState = LoginState.init(),
+        historialState = HistorialState.init();
 
-  AppState(this.webserviceState, this.navigatorKey, this.homeState);
+  AppState(this.title, this.webserviceState, this.navigatorKey, this.homeState,
+      this.loginState, this.historialState);
 
   AppState copy(
-          {WebServiceState? webServiceState,
+          {String? title,
+          WebServiceState? webServiceState,
           GlobalKey<NavigatorState>? navigatorKey,
-          HomeState? homeState}) =>
-      AppState(webServiceState ?? webserviceState,
-          navigatorKey ?? this.navigatorKey, homeState ?? this.homeState);
+          HomeState? homeState,
+          LoginState? loginState,
+          HistorialState? historialState}) =>
+      AppState(
+          title ?? this.title,
+          webServiceState ?? webserviceState,
+          navigatorKey ?? this.navigatorKey,
+          homeState ?? this.homeState,
+          loginState ?? this.loginState,
+          historialState ?? this.historialState);
 }
 
-class AppAction {}
-
 AppState appReducer(AppState state, AppAction action) {
-  switch (action.runtimeType) {
-    default:
-      return state;
-  }
+  AppState newState = navigationReducer(state, action);
+  newState = loginReducer(state, action);
+  newState = historialReducer(state, action);
+  return newState;
 }
 
 AppState navigationReducer(AppState prev, AppAction action) {
@@ -50,5 +67,6 @@ AppState navigationReducer(AppState prev, AppAction action) {
       GlobalKey<NavigatorState> navKey = prev.navigatorKey..currentState!.pop();
       return prev.copy(navigatorKey: navKey);
   }
+  print(prev.historialState.imgHref);
   return prev;
 }

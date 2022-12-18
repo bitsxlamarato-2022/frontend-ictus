@@ -39,6 +39,8 @@ dependencies:
 
   flutter_redux: ^0.10.0
   redux_thunk: ^0.4.0
+  toggle_switch: ^1.2.0
+  http: ^0.13.3
 
 dev_dependencies:
   flutter_test:
