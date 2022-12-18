@@ -10,8 +10,8 @@ class LoginState {
   final TextEditingController fieldTextController;
 
   LoginState.init()
-      : id = "string",
-        pass = "",
+      : id = "test1",
+        pass = "miaumiau",
         log_err = false,
         fieldTextController = TextEditingController();
 
@@ -34,12 +34,14 @@ AppState loginReducer(AppState prev, AppAction action) {
       return prev.copy(loginState: prev.loginState.copy(log_err: false));
     case ChangeNameAction:
       var newAction = (action as ChangeNameAction);
-
+      print("CHANGENAME:" + newAction.variable);
       return prev.copy(
           loginState: prev.loginState.copy(id: newAction.variable));
 
     case ChangePassAction:
       var newAction = (action as ChangePassAction);
+      print("CHANGEPASS:" + newAction.variable);
+
       print(action.variable);
       return prev.copy(
           loginState: prev.loginState.copy(pass: newAction.variable));

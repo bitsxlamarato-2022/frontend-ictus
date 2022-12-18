@@ -37,6 +37,9 @@ class BackendAPIService {
           'id': id,
           'password': password,
         }));
+    print(id);
+    print(password);
+    print(response.body);
     if (response.statusCode == 200) {
       bool res = jsonDecode(response.body);
       return res;

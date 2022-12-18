@@ -57,7 +57,7 @@ class HomeWidget extends StatelessWidget {
                   onPressed: goHistory,
                   child: const Center(
                     child: Text(
-                      "My historial",
+                      "Get ECG",
                       style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold, color: Colors.white),
                     ),
 
