@@ -17,8 +17,16 @@ class BackendAPIService {
   }
 
   Future<bool> checkUser(String id, String password) async {
-    Uri uri = Uri.parse(host + "/login" + id + password);
-    final response = await get(uri);
+    return false;
+    Uri uri = Uri.parse(host + "/login/");
+    final response = await post(uri,
+        headers: <String, String>{
+          'Content-Type': 'application/json',
+        },
+        body: jsonEncode(<String, String>{
+          'id': id,
+          'password': password,
+        }));
     if (response.statusCode == 200) {
       UserDTO user = UserDTO.fromJson(jsonDecode(response.body));
       if (user.password == password) {
@@ -27,6 +35,8 @@ class BackendAPIService {
         return false;
       }
     } else {
+      print(response.statusCode);
+      return false;
       throw Exception('Failed to login');
     }
   }

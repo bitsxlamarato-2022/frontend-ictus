@@ -6,7 +6,12 @@ import 'package:ictus/store/store.dart';
 import '../store/actions.dart';
 import '../store/store.dart';
 
-class SubmitAction extends AppAction {
+class ErrorLoginAction extends AppAction {
+
+}
+
+class CleanErrorAction extends AppAction {
+
 }
 class ChangeNameAction extends AppAction {
   final String variable;
@@ -17,5 +22,8 @@ class ChangePassAction extends AppAction {
   final String variable;
 
   ChangePassAction(this.variable);
+}
+class ClearPasswordText extends AppAction {
+
 }
 
