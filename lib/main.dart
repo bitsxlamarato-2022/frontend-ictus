@@ -9,6 +9,8 @@ import 'home/home.dart';
 import 'package:redux/redux.dart';
 import 'package:redux_thunk/redux_thunk.dart';
 
+import 'profile/profile.dart';
+
 void main() {
   final store = Store<AppState>((x, a) => appReducer(x, a),
       initialState: AppState.init(), middleware: [thunkMiddleware]);
@@ -54,6 +56,7 @@ class MyApp extends StatelessWidget {
               Routes.home: (c) => HomeWidget(),
               Routes.alert: (c) => AlertWidget(),
               Routes.login: (c) => LoginWidget(),
+              Routes.profile: (c) => ProfileWidget(),
             },
           ),
         ),

@@ -17,7 +17,7 @@ class AlertWidget extends StatelessWidget {
           () => store.dispatch(NavigateToNextAndReplace(Routes.home)),
       builder: (cto, goBack) => StoreConnector<AppState, VoidCallback>(
         converter: (store) => () {
-          store.dispatch(SendToModel());
+          //store.dispatch(SendToModel());
           store.dispatch(NavigateToNextAndReplace(Routes.home));
         },
         builder: (cto, acceptAlert) => Scaffold(
