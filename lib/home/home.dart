@@ -35,7 +35,7 @@ class HomeWidget extends StatelessWidget {
                 ),
                 ElevatedButton(
                   style: ElevatedButton.styleFrom(
-                    primary: Colors.indigo[900],
+                    primary: Colors.indigo[600],
                     fixedSize: const Size(350, 270),
                   ),
                   onPressed: goProfile,
