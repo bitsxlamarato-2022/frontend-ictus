@@ -34,8 +34,8 @@ class AppState {
 }
 
 AppState appReducer(AppState state, AppAction action) {
-  AppState newState = loginReducer(state, action);
-  newState = navigationReducer(newState, action);
+  AppState newState = navigationReducer(state, action);
+  newState = loginReducer(state, action);
   return newState;
 }
 
