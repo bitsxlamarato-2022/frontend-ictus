@@ -17,7 +17,7 @@ class BackendAPIService {
   }
 
   Future<bool> checkUser(String id, String password) async {
-    return false;
+
     Uri uri = Uri.parse(host + "/login/");
     final response = await post(uri,
         headers: <String, String>{
