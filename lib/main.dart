@@ -7,6 +7,8 @@ import 'package:ictus/store/store.dart';
 import 'accepted/accepted.dart';
 import 'alert/alert.dart';
 import 'home/home.dart';
+import 'profile/profile.dart';
+import 'historial/historial.dart';
 import 'package:redux/redux.dart';
 import 'package:redux_thunk/redux_thunk.dart';
 
@@ -52,13 +54,14 @@ class MyApp extends StatelessWidget {
               primarySwatch: Colors.blue,
             ),
             home: Container(),
-            initialRoute: Routes.home,
+            initialRoute: Routes.login,
             routes: {
               Routes.home: (c) => HomeWidget(),
               Routes.alert: (c) => AlertWidget(),
               Routes.login: (c) => LoginWidget(),
               Routes.accepted: (c) => AcceptedWidget(),
               Routes.profile: (c) => ProfileWidget(),
+              Routes.historial: (c) => HistorialWidget(),
             },
           ),
         ),

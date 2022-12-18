@@ -10,7 +10,7 @@ class LoginState {
   final TextEditingController fieldTextController;
 
   LoginState.init()
-      : id = "",
+      : id = "string",
         pass = "",
         log_err = false,
         fieldTextController = TextEditingController();

@@ -9,6 +9,7 @@ class Routes {
   static const String alert = "ALERT";
   static const String login = "LOGIN";
   static const String accepted = "ACCEPTED";
+  static const String historial = "HISTORIAL";
 }
 
 @immutable

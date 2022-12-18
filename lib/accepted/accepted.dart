@@ -13,7 +13,7 @@ class AcceptedWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return StoreConnector<AppState, VoidCallback>(
       converter: (store) =>
-          () => store.dispatch(NavigateToNextAndReplace(Routes.home)),
+          () => store.dispatch(NavigateToNextAndReplace(Routes.historial)),
       builder: (cto, goBack) => Scaffold(
         body: Container(
           color: Colors.indigo[50],
