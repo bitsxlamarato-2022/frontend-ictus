@@ -16,8 +16,8 @@ class LoginWidget extends StatelessWidget {
           builder: (cto, onPressed) => Column(
             children: [
               TextField(
-                decoration: InputDecoration(
-                  border: OutlineInputBorder(),
+                decoration: const InputDecoration(
+                  border:  OutlineInputBorder(),
                   hintText: 'Enter a search term',
                 ),
                 onChanged: (text) => onChanged(text),

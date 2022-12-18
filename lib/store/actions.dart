@@ -7,6 +7,7 @@ class Routes {
   static const String home = "HOME";
   static const String alert = "ALERT";
   static const String login = "LOGIN";
+  static const String accepted = "ACCEPTED";
 }
 
 @immutable
